@@ -6,81 +6,10 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" type="text/css" href="logCSS.css"> <!--This is the login type page style sheet-->
 </head>
   
   <body class="img-fluid"">
-    <style type="text/css">
-      body{
-        background: linear-gradient(
-        rgba(0, 0, 0, 0.1), 
-        rgba(0, 0, 0, 0.1)
-        ),url("loginPic.jpg");
-        background-position: center center;
-        background-repeat: no-repeat; 
-        background-attachment: fixed;
-        background-size: cover;
-      }
-      h1{ /*MAYBE*/
-        font-family: "verdana";
-        color: white;
-        padding-top: 4%;
-        font-size: 4.0vw;
-        padding-bottom: 1.75%
-
-      }
-      table{
-        padding-top: 2%;
-        padding-bottom: 2%;
-        border-radius: 10px;
-        float: center;
-        background-color: rgba(7, 55, 99, .65);
-      }
-      .tabForm{
-        color: white;
-        font-family: "verdana";
-        width: 30%;
-        text-align: center;
-        float: center;
-      }
-      td{
-        font-size: 20px;
-      }
-      th{
-        font-size: 4.0VW;
-      }
-      button{
-        background-color: #e69138ff;
-        cursor: pointer;
-        border-radius: 3px;
-        border-color: #e69138ff;
-      }
-      button:hover{
-        /*have not decided what to do here yet*/
-        background-color: #ffb833;
-        border-color: #ffb833;
-      }
-
-      a:link {
-    color: white;
-    font-size: 12px
-    }
-
-      /* visited link */
-      a:visited {
-          color: white;
-      }
-
-      /* mouse over link */
-      a:hover {
-          color: #e69138ff;
-      }
-
-      /* selected link */
-      a:active {
-          color: #e69138ff;
-      }
-    </style>
     <center>
     <h1></h1> <!---class name needs to be added-->
     </center>
@@ -123,7 +52,7 @@
     //these would be similar to what happens when the log in button is pressed.
     function checkUser(){
       var user = document.getElementById('user');
-      if(user.value.length != 14 && user.value.length != 15){
+      if(user.value.length != 19 && user.value.length != 18){
         return false;
       }
       else{

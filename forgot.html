@@ -6,9 +6,58 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" type="text/css" href="logCSS.css">
+<style type="text/css">
+	th{
+		font-size: 4.0vw;
+		color: white;
+	}
+	td{
+		font-size: 20px;
+		color: white;
+	}
+</style>
 </head>
 <body>
-<h1>Page Not Here Yet</h1>
+
+	<center>
+		<h1></h1>
+<table><th style="text-align: center;">Forgotten Password?</th> <tr>
+<td style="padding-left: 5%; padding-right: 5%; text-align: center;">Put your email in the blank below and click the button to have a new one sent to you.</td>
+</tr>
+<tr>
+	<td style="text-align: center; padding-top: 8%;">
+	<input type="text" id=email name="email" placeholder="Email">
+	</td>
+</tr>
+<tr><td style="text-align: center;  padding-bottom: 3%;">
+	<button id="send" style="font-size: 18px;">Send</button></td></tr>
+</table>
+</center>
 </body>
+<script type="text/javascript">
+	//email = id email
+	//button = id send
+	function validateEmail(){
+		var toValidate = document.getElementById('email');
+		if(toValidate.value.length != 19 && toValidate.value.length != 18){
+			return false;
+		}
+		else if(false /*email isn't in system, to be changed*/){
+
+		}
+		else{
+			return true;
+		}
+	}
+	var press = document.getElementById('send');
+	press.addEventListener('click', function(){
+		if(validateEmail()){
+			alert("Email Sent");
+		}
+		else{
+			alert("Enter a valid email.");
+		}
+	}, false);
+</script>
 </html>
