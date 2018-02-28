@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>Login</title>
- <link rel="stylesheet" href="css/bootstrap.css" /> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 </head>
   
   <body class="img-fluid"">
@@ -80,6 +83,7 @@
     <center>
     <h1></h1> <!---class name needs to be added-->
     </center>
+    <form>
         <center>
       <table>
         <th colspan="2" class="tabForm">UnnamedWebsite.com</th>
@@ -89,14 +93,14 @@
         <td class="tabForm">Join Now!</td>
        </tr>
         <tr>
-        <td class="tabForm"><br><input type="text" id="user" placeholder="Username" tabindex="1"/></td>  
-        <td rowspan="2" class="tabForm"> <button>Create Account</button></td>
+        <td class="tabForm"><br><input type="text" id="user" placeholder="Email" tabindex="1"/></td>  
+        <td rowspan="2" class="tabForm"> <button id="create">Create Account</button></td>
           </tr>
           <tr>  
-          <td class="tabForm"><input type="text" id="pass" placeholder="Password" tabindex="2"> </td>
+          <td class="tabForm"><input type="password" id="pass" placeholder="Password" tabindex="2"> </td>
 
         <tr>
-          <td class="tabForm"><button>Log in</button></td>
+          <td class="tabForm"><button id="log">Log in</button></td>
         </tr>
         <tr>
 
@@ -107,4 +111,37 @@
       </form>
 
   </body>
+  <script type="text/javascript">
+    //not to be used yet
+    var pass = document.getElementById('pass');
+
+    function createAcct(){
+      alert("can't do anything yet (not implemented)")
+    }
+
+    //these would be similar to what happens when the log in button is pressed.
+    function checkUser(){
+      var user = document.getElementById('user');
+      if(user.value.length != 14 && user.value.length != 15){
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+    function logPress(){
+      if(checkUser() == true)
+        alert("No accounts made yet, no back end");
+      else
+        alert("username not valid, it needs to be a UVA Email")
+    }
+    var log = document.getElementById('log');
+    log.addEventListener('click', function(){
+      logPress(); }, false);  
+    var create = document.getElementById('create');
+    create.addEventListener('click', function(){
+      createAcct();
+    }, false);
+
+  </script>
 </html>
