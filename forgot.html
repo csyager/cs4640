@@ -21,11 +21,11 @@
 <body>
 
 	<center>
-		<h1></h1>
+		<h1></h1> <!-- trying to stay as similar as possible to login-->
 <table><th style="text-align: center;">Forgotten Password?</th> <tr>
 <td style="padding-left: 5%; padding-right: 5%; text-align: center;">Put your email in the blank below and click the button to have a new one sent to you.</td>
 </tr>
-<tr>
+<tr> <!-- the email and submit are on rows of the table-->
 	<td style="text-align: center; padding-top: 8%;">
 	<input type="text" id=email name="email" placeholder="Email">
 	</td>
@@ -38,6 +38,7 @@
 <script type="text/javascript">
 	//email = id email
 	//button = id send
+	//again, a lot of placeholders, need backend
 	function validateEmail(){
 		var toValidate = document.getElementById('email');
 		if(toValidate.value.length != 19 && toValidate.value.length != 18){

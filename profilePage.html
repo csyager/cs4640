@@ -7,10 +7,9 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="navbarCSS.css">
 </head>
 <body>
-<style type="text/css">
+<style type="text/css">  /*Will probably put this into a CSS file. 
 /*source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js */
 .container {
     display: inline-block;
@@ -163,7 +162,7 @@
             <input id="searchWordSmall" type="text" name="search" placeholder="Search for Listings" style="max-width: 75%">
             <button id="goSmall">Go</button>
         </div>
-<!--<a href="login.html" class="btn col-sm-3 col-3" data-toggle="collapse" data-target="#dropper" style="font-size: 3.3vw; "></a> -->
+<!--<a href="login.html" class="btn col-sm-3 col-3" data-toggle="collapse" data-target="#dropper" style="font-size: 3.3vw; ">Options</a> -->
   <div class="container btn col-sm-2 col-2" data-toggle="collapse" data-target="#dropper" onclick="makeX(this)" style="float: right;">
   <div class="bar1"></div>
   <div class="bar2"></div>
@@ -184,7 +183,7 @@
   </nav>
 
 </div> <!--end navbar-->
-
+  <!-- We need to put a 'manage listings' button undecided of where it will go, so it is not included-->
   <h1></h1>
 <div class="container-fluid">
   <div class="container-fluid" align="left">
@@ -203,6 +202,7 @@
     x.classList.toggle("change");
 }
 //end source
+//downside of resizing is that two different search bars must be maintained
   function searchBig(){
     var term = document.getElementById('searchword');
     ///Placeholder, we have nothing to search currently
@@ -221,5 +221,8 @@
   sub.addEventListener('click', function(){
       searchSmall();
     }, false);
+//end search bar stuff
+
+
 </script>
 </html>
