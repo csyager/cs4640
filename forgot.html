@@ -54,7 +54,8 @@
 	var press = document.getElementById('send');
 	press.addEventListener('click', function(){
 		if(validateEmail()){
-			alert("Email Sent");
+			alert("Email Sent, reloading the login page.");
+			window.open("login.html");
 		}
 		else{
 			alert("Enter a valid email.");
