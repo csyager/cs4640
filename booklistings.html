@@ -200,14 +200,14 @@
 		<!--top border-->
 		<tr style="height: 10px"> 
 		<td style="width: 10px"></td>
-		<td colspan="5" style="background-color: blue"></td>
+		<td colspan="5" style="background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--listing 1-->
 		<tr>
 		<td style="width: 10px"></td>
-		<td style="width: 10px; background-color: blue"></td>
+		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<!--Image column-->
 		<td style="background-color: orange; width: 60px">
 			<img src="textbook.jpg" height="100px" width="60px">
@@ -221,21 +221,21 @@
 		<td style="background-color: orange">
 			<p>$750.99</p>
 			<p>Condition: New</p>
-		<td style="width: 10px; background-color: blue"></td>
+		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--separator-->
 		<tr style="height: 10px"> 
 		<td style="width: 10px"></td>
-		<td colspan="5" style="background-color: blue"></td>
+		<td colspan="5" style="background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--listing 2-->
 		<tr>
 		<td style="width: 10px"></td>
-		<td style="width: 10px; background-color: blue"></td>
+		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<!--Image column-->
 		<td style="background-color: orange; width: 60px">
 			<img src="textbook.jpg" height="100px" width="60px">
@@ -249,21 +249,21 @@
 		<td style="background-color: orange">
 			<p>$600.00</p>
 			<p>Condition: New</p>
-		<td style="width: 10px; background-color: blue"></td>
+		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--separator-->
 		<tr style="height: 10px"> 
 		<td style="width: 10px"></td>
-		<td colspan="5" style="background-color: blue"></td>
+		<td colspan="5" style="background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--listing 3-->
 		<tr>
 		<td style="width: 10px"></td>
-		<td style="width: 10px; background-color: blue"></td>
+		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<!--Image column-->
 		<td style="background-color: orange; width: 60px">
 			<img src="textbook.jpg" height="100px" width="60px">
@@ -277,21 +277,21 @@
 		<td style="background-color: orange">
 			<p>$450.00</p>
 			<p>Condition: Like New</p>
-		<td style="width: 10px; background-color: blue"></td>
+		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--separator-->
 		<tr style="height: 10px"> 
 		<td style="width: 10px"></td>
-		<td colspan="5" style="background-color: blue"></td>
+		<td colspan="5" style="background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--listing 4-->
 		<tr>
 		<td style="width: 10px"></td>
-		<td style="width: 10px; background-color: blue"></td>
+		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<!--Image column-->
 		<td style="background-color: orange; width: 60px">
 			<img src="textbook.jpg" height="100px" width="60px">
@@ -305,25 +305,66 @@
 		<td style="background-color: orange">
 			<p>$100.00</p>
 			<p>Condition: Poor</p>
-		<td style="width: 10px; background-color: blue"></td>
+		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--separator-->
 		<tr style="height: 10px"> 
 		<td style="width: 10px"></td>
-		<td colspan="5" style="background-color: blue"></td>
+		<td colspan="5" style="background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 		<!--bottom border-->
 		<tr style="height: 10px">
 		<td style="width: 10px"></td>
-		<td colspan="5" style="background-color: blue"></td>
+		<td colspan="5" style="background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>
 		</tr>
 
 
 
 </div>
-<br>
+<br/>
+</body>
+<script type="text/javascript">
+  //source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js
+  function makeX(x) {
+    x.classList.toggle("change");
+}
+//end source
+//downside of resizing is that two different search bars must be maintained
+  function searchBig(){
+    var term = document.getElementById('searchword');
+    ///Placeholder, we have nothing to search currently, just for demo
+    if(searchword.value == "python"){
+      window.open("booklistings.html", "_self");
+    }
+    else{
+    alert("The tag you searhed for was not Found");
+  }
+  }
+  var sub = document.getElementById('go');
+  sub.addEventListener('click', function(){
+      searchBig();
+    }, false);
+    function searchSmall(){
+    var term = document.getElementById('searchWordSmall');
+    ///Placeholder, we have nothing to search currently, this is just for demo
+        if(searchword.value == "python"){
+      window.open("booklistings.html", "_self");
+    }
+    else{
+    alert("The tag you searhed for was not Found");
+  }
+  }
+  var sub = document.getElementById('goSmall');
+  sub.addEventListener('click', function(){
+      searchSmall();
+    }, false);
+//end search bar stuff
+
+
+</script>
+</html>

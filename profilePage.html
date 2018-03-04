@@ -205,8 +205,13 @@
 //downside of resizing is that two different search bars must be maintained
   function searchBig(){
     var term = document.getElementById('searchword');
-    ///Placeholder, we have nothing to search currently
+    ///Placeholder, we have nothing to search currently, just for demo
+    if(searchword.value == "python"){
+      window.open("booklistings.html", "_self");
+    }
+    else{
     alert("The tag you searhed for was not Found");
+  }
   }
   var sub = document.getElementById('go');
   sub.addEventListener('click', function(){
@@ -214,8 +219,13 @@
     }, false);
     function searchSmall(){
     var term = document.getElementById('searchWordSmall');
-    ///Placeholder, we have nothing to search currently
+    ///Placeholder, we have nothing to search currently, this is just for demo
+        if(searchword.value == "python"){
+      window.open("booklistings.html", "_self");
+    }
+    else{
     alert("The tag you searhed for was not Found");
+  }
   }
   var sub = document.getElementById('goSmall');
   sub.addEventListener('click', function(){
