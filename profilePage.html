@@ -184,17 +184,64 @@
 
 </div> <!--end navbar-->
   <!-- We need to put a 'manage listings' button undecided of where it will go, so it is not included-->
-  <h1></h1>
-<div class="container-fluid">
-  <div class="container-fluid" align="left">
-    <div class="col-md-6 border">
-    <center>
-    <!-- This is where we put th table and stuff-->
+  <h1 style="padding-left: 35px">Profile</h1>
 
-    </center>
   </div>
-  </div>
-  </div>
+<div id="left" style="float: left; width: 30%">
+<img src="profilepic.png" height="60%" width ="100%" style="padding: 30px">
+<br>
+<h1 style="text-align: center">Your Name</h1>
+<br>
+<table style="width: 90%; background-color: orange; margin-left: 30px">
+<!--top padding-->
+<tr><td><br></td></tr>
+<tr>
+<td>user@gmail.com</td>
+</tr>
+<tr>
+<td>Average Rating:</td>
+<td>5 Stars</td>
+</tr>
+<tr>
+<td>Number of Listings</td>
+<td>2 Listings</td>
+<!--bottom padding-->
+<tr><td><br></td></tr>
+</table>
+
+</div>
+<div id="right" style="float:right; width: 60%">
+<br>
+<table style="width: 80%; background-color: orange; margin-left: 30px">
+<tr>
+<td colspan="2" style="text-align: center"><b>Your Listings</b></td>
+</tr>
+<!--line break-->
+<tr><td><br></td></tr>
+<!--listing 1-->
+<tr style="outline: thick solid">
+<td><img src="textbook.jpg" height="100px" width="60px"></td>
+<td>
+<a href="unimplemented.html">Introduction to Python 3rd Edition</a>
+      <p>Hardcover</p>
+<br>
+</td>
+<!--padding between listings-->
+<tr><td><br></td></tr>
+<!--listing 2-->
+<tr style="outline: thick solid">
+<td><img src="textbook.jpg" height="100px" width="60px"></td>
+<td>
+<a href="unimplemented.html">Introduction to Python 3rd Edition</a>
+      <p>Looseleaf</p>
+<br>
+</td>
+<!--padding between listings-->
+<tr><td><br></td></tr>
+</table>
+
+</div>
+
 </body>
 <script type="text/javascript">
   //source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js
@@ -205,13 +252,8 @@
 //downside of resizing is that two different search bars must be maintained
   function searchBig(){
     var term = document.getElementById('searchword');
-    ///Placeholder, we have nothing to search currently, just for demo
-    if(searchword.value == "python"){
-      window.open("booklistings.html", "_self");
-    }
-    else{
+    ///Placeholder, we have nothing to search currently
     alert("The tag you searhed for was not Found");
-  }
   }
   var sub = document.getElementById('go');
   sub.addEventListener('click', function(){
@@ -219,13 +261,8 @@
     }, false);
     function searchSmall(){
     var term = document.getElementById('searchWordSmall');
-    ///Placeholder, we have nothing to search currently, this is just for demo
-        if(searchWordSmall.value == "python"){
-      window.open("booklistings.html", "_self");
-    }
-    else{
+    ///Placeholder, we have nothing to search currently
     alert("The tag you searhed for was not Found");
-  }
   }
   var sub = document.getElementById('goSmall');
   sub.addEventListener('click', function(){
