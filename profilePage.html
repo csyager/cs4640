@@ -118,12 +118,12 @@
       .regular{
         /*css way to get navbar to turn into dropdown*/
       }
-    @media only screen and (min-width: 839px) {
+    @media only screen and (min-width: 850px) {
     .droptop {
         display: none;
     }
    }
-      @media only screen and (max-width: 838px) {
+      @media only screen and (max-width: 851px) {
     .regular{
         display: none;
     }
@@ -250,7 +250,7 @@
 <footer style="padding-top: 10px;"></footer>
 </body>
 <script type="text/javascript">
-  //source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js
+ //source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js
   function makeX(x) {
     x.classList.toggle("change");
 }
@@ -258,8 +258,13 @@
 //downside of resizing is that two different search bars must be maintained
   function searchBig(){
     var term = document.getElementById('searchword');
-    ///Placeholder, we have nothing to search currently
+    ///Placeholder, we have nothing to search currently, just for demo
+    if(searchword.value == "python"){
+      window.open("booklistings.html", "_self");
+    }
+    else{
     alert("The tag you searhed for was not Found");
+  }
   }
   var sub = document.getElementById('go');
   sub.addEventListener('click', function(){
@@ -267,14 +272,20 @@
     }, false);
     function searchSmall(){
     var term = document.getElementById('searchWordSmall');
-    ///Placeholder, we have nothing to search currently
+    ///Placeholder, we have nothing to search currently, this is just for demo
+        if(searchWordSmall.value == "python"){
+      window.open("booklistings.html", "_self");
+    }
+    else{
     alert("The tag you searhed for was not Found");
+  }
   }
   var sub = document.getElementById('goSmall');
   sub.addEventListener('click', function(){
       searchSmall();
     }, false);
 //end search bar stuff
+
 
 
 </script>
