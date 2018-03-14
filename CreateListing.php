@@ -220,30 +220,23 @@ table{
 <?php  
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
   //echo "<center><table style='background-color:white; padding-bottom:0px;'><td style='color:red'>YOURalkd;jgldsjg;lads;aj;ldsfj;dsaljfsa;ldfj;dsalfjdsa;lfjdsa;lfdsajf;ldsajf;lsadjf;ljsaf</td></table></center>";
-    $prefixes = array('CS', 'MEC', 'ECE'); //PLACEHOLDER
+
     $fileTypes = ['image/jpg', 'image/png', 'image/jpeg'];
     $courseERR = false;
     $numERR = false;
     $titleERR = false;
-
     $imgERR = false;
    
 
 
     //helpers
     //checking valid course prefix
-  function checkValidPre($prefix){
-    global $prefixes;
-    foreach ($prefixes as $value) {
-      if($value = $prefix){
-        return true;
-      }
-      else{
-        return false;
-      }
-    }
+  function checkValidPre($prefix){ 
+    $preCaps = strtoupper($prefix);
+    return true;
+    //this will be validating the prefix with ones stored on the server, hardcoding these in
   }
-  //checking valid course number
+  //checking valid course number, helper
   function checkValidNum($num){
     if(ctype_digit((string)$num)){
       if($num > 999 && $num < 10000){
@@ -258,7 +251,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
   }
 
-
+  //prefix
   if(!isset($_POST['prefix'])){
     $courseERR = true;
   }
@@ -266,7 +259,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
        $courseERR = true;
   }
 
-
+  //course number
   if(!isset($_POST['number'])){
     $numERR = true;
   }
@@ -276,32 +269,76 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $numERR = true;
   }
 }
-
+  //title
   if(!isset($_POST['title']) || (strpos($_POST['title'], '<') !== false)){ //guard script injection, title should be entered, double checking. 0 == false
     $titleERR = true;
   }
   
   //image stuff
   
-
-
-  if(!$imgERR && !$numERR && !$titleERR && !$courseERR){
-    //send data to server
-    echo "YUH";
+  $size=$_FILES['imageIn']['size']; //this will be zero if no file at all was uploaded
+    // var_dump($size);
+  if($size == 0){
+    $imgERR = true; //no file uploaded
   }
   else{
+     $pic=getimagesize($_FILES['imageIn']['tmp_name']); 
+     $ext = $pic['mime'];
+     //check for extension
+     //var_dump($ext);
+     if(!in_array($ext, $fileTypes)){
+      $imgERR = true;
+    }
+  }
+
+//error checking done, now either send to server or display error messages
+  if(!$imgERR && !$numERR && !$titleERR && !$courseERR){
+    //send data to server
+    echo "Send to the Server";
+  } //errors were there
+  else{
+    $numberERRS = 0;
+    echo "<center><table style='background-color:white; padding-bottom:0px;'>";
     if ($imgERR) {
-        echo "pic";
+        if($numberERRS == 0){
+          $numberERRS = 1;
+          echo "<td style='color:red'>File must be an image</td>";
+        }
+        else{
+          echo "<tr><td style='color:red'>File must be an image</td></tr>";
+        }
+
       }
     if ($courseERR) {
-        echo "prefix";
+       if($numberERRS == 0){
+          $numberERRS = 1;
+          echo "<td style='color:red'>Course prefix is not valid</td>";
+      }
+        else{
+          echo "<tr><td style='color:red'>Course prefix is not valid</td></tr>";
+       }
+
       }
     if ($numERR) {
-        echo "nm";
+        if($numberERRS == 0){
+          $numberERRS = 1;
+          echo "<td style='color:red'>Course number is not valid</td>";
+        }
+        else{
+          echo "<tr><td style='color:red'>Course number is not valid</td></tr>";
+        }
+
     }
     if($titleERR)
-        echo "string";
+         if($numberERRS == 0){
+          echo "<td style='color:red'>Title contains invalid characters</td>";
+        }
+        else{
+          echo "<tr><td style='color:red'>Title contains invalid characters</td></tr>";
+        }
+
     }
+    echo "</table></center>";
 }
 
 ?>
@@ -309,7 +346,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
 <center>
-<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
   <table width="fit">
     <th style="text-align: center; padding-bottom: 0px;">Create a Listing</th>
     <tr><td style="font-size: 15px; padding-bottom: 5%;"><a href="unimplemented.html" style="color: white; text-decoration: underline;">How do I fill this out?</a></td></tr>
@@ -317,7 +354,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       <td><input type="text" id="title" name="title" placeholder="Book Title" style="width: 400px;" required></td>
     </tr>
     <tr>
-      <td><input type="text" name="prefix" placeholder="Course Prefix (ex. COMM)" id="prefix" style="width: "fit";"> <input type="text" name="number" id="number" placeholder="Course Number (ex. 2010)" onclick="dispErr()"></td>
+      <td><input type="text" name="prefix" placeholder="Course Prefix (ex. COMM)" id="prefix" style="width: "fit";"> <input type="text" name="number" id="number" placeholder="Course Number (ex. 2010)" onfocus="dispErr()"></td>
     </tr>
     <tr>
       <td><div id="errorStuff" style="color: orange; font-weight: bold;"></div></td>
@@ -388,18 +425,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }, false);
 //end search bar stuff
 /*try to disable the course number until the user has put a value into the prefix*/
-  function checkPre(){
+  function checkPre(){ 
     var pre = document.getElementById('prefix');
-    var preVal = pre.value.toUpperCase();
-    if(preVal == "CS") /*hardcode these in I gues*/
-      return true;
-    else
+    var preVal = pre.value;
+    if(preVal == "")
       return false;
+    else
+      return true;
   }
 
-  function dispErr(){
+  function dispErr(){ //tell them to make sure to fill out the prefix box, checking validity in php because a data structure is best way to store those
     if(!checkPre()){
-      document.getElementById('errorStuff').innerHTML = "**Be sure to enter a valid course prefix to submit**"
+      document.getElementById('errorStuff').innerHTML = "**Be sure to enter a course prefix to submit**"
     }
 
   }
