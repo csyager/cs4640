@@ -120,10 +120,10 @@ table{
         text-align: center;
         float: center;
       }
-            h1{ /*MAYBE*/
+      h1{ /*MAYBE*/
         font-family: "verdana";
         color: white;
-        padding-top: 4%;
+        padding-top: 2%;
         font-size: 4.0vw;
         padding-bottom: 1.75%
       }
@@ -238,6 +238,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   }
   //checking valid course number, helper
   function checkValidNum($num){
+    if($num == 0 || $num =="'0'"){
+      return true;
+    }
     if(ctype_digit((string)$num)){
       if($num > 999 && $num < 10000){
         return true;
@@ -270,7 +273,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   }
 }
   //title
-  if(!isset($_POST['title']) || (strpos($_POST['title'], '<') !== false)){ //guard script injection, title should be entered, double checking. 0 == false
+  if(!isset($_POST['title']) || (strpos($_POST['title'], '<') !== false) || (strpos($_POST['title'], '>') !== false)){ //guard script injection, title should be entered, double checking. 0 == false
     $titleERR = true;
   }
   
@@ -312,29 +315,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if ($courseERR) {
        if($numberERRS == 0){
           $numberERRS = 1;
-          echo "<td style='color:red'>Course prefix is not valid</td>";
+          echo "<td style='color:red'>Course prefix was not valid</td>";
       }
         else{
-          echo "<tr><td style='color:red'>Course prefix is not valid</td></tr>";
+          echo "<tr><td style='color:red'>Course prefix was not valid</td></tr>";
        }
 
       }
     if ($numERR) {
         if($numberERRS == 0){
           $numberERRS = 1;
-          echo "<td style='color:red'>Course number is not valid</td>";
+          echo "<td style='color:red'>Course number was not valid</td>";
         }
         else{
-          echo "<tr><td style='color:red'>Course number is not valid</td></tr>";
+          echo "<tr><td style='color:red'>Course number was not valid</td></tr>";
         }
 
     }
     if($titleERR)
          if($numberERRS == 0){
-          echo "<td style='color:red'>Title contains invalid characters</td>";
+          echo "<td style='color:red'>Title contained invalid characters</td>";
         }
         else{
-          echo "<tr><td style='color:red'>Title contains invalid characters</td></tr>";
+          echo "<tr><td style='color:red'>Title contained invalid characters</td></tr>";
         }
 
     }
@@ -349,19 +352,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
   <table width="fit">
     <th style="text-align: center; padding-bottom: 0px;">Create a Listing</th>
-    <tr><td style="font-size: 15px; padding-bottom: 5%;"><a href="unimplemented.html" style="color: white; text-decoration: underline;">How do I fill this out?</a></td></tr>
+    <tr>
+      <td style="font-size: 15px; padding-bottom: 5%;"><a href="unimplemented.html" style="color: white; text-decoration: underline;">How do I fill this out?</a></td>
+    </tr>
     <tr>
       <td><input type="text" id="title" name="title" placeholder="Book Title" style="width: 400px;" required></td>
     </tr>
     <tr>
-      <td><input type="text" name="prefix" placeholder="Course Prefix (ex. COMM)" id="prefix" style="width: "fit";"> <input type="text" name="number" id="number" placeholder="Course Number (ex. 2010)" onfocus="dispErr()"></td>
+      <td><div id="titleInfo" style="color: orange; font-weight: bold;"></div></tr>
+    <tr>
+      <td><input type="text" name="prefix" placeholder="Course Prefix (ex. COMM)" id="prefix" style="width: fit;" required> <input type="text" name="number" id="number" placeholder="Course Number (ex. 2010)" required></td>
     </tr>
     <tr>
-      <td><div id="errorStuff" style="color: orange; font-weight: bold;"></div></td>
-    </tr>
-        <tr>
       <td>
-        <select  id="type" name="type">
+        <div id="courseInfo" style="color: orange; font-weight: bold;"></div><div id="numInfo" style="color: orange; font-weight: bold;"></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <select  id="type" name="type" required>
         <option selected disabled>Select Book Type</option>
         <option>Hardcover</option>
         <option>Paperback</option>
@@ -371,7 +380,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </tr>
     <tr>
     <td>
-      <select id="condition" name="condition">
+      <select id="condition" name="condition" required>
         <option selected disabled>Select a Book Condition</option>
         <option>Like New</option>
         <option>Good (May have small amount of writing/highlighting)</option>
@@ -380,7 +389,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       </select>
     </td>
     </tr>
-    <tr><td style="color:white; text-align: right;">Upload an Image--><input type="file" name="imageIn" id="img"></td></tr>
+    <tr>
+      <td style="color:white; text-align: right;">Upload an Image--><input type="file" name="imageIn" id="img"></td>
+    </tr>
     <tr>
       <td><button type="submit">Submit</button></td>
     </tr>
@@ -425,7 +436,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }, false);
 //end search bar stuff
 /*try to disable the course number until the user has put a value into the prefix*/
-  function checkPre(){ 
+/*  function checkPre(){ 
     var pre = document.getElementById('prefix');
     var preVal = pre.value;
     if(preVal == "")
@@ -433,13 +444,57 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     else
       return true;
   }
-
-  function dispErr(){ //tell them to make sure to fill out the prefix box, checking validity in php because a data structure is best way to store those
-    if(!checkPre()){
-      document.getElementById('errorStuff').innerHTML = "**Be sure to enter a course prefix to submit**"
-    }
-
+*/
+  //info and errors
+  function dispTitle(){
+    document.getElementById('titleInfo').innerHTML = "Note: title may not include '<' or '>'";
   }
+    function NondispTitle(){
+    document.getElementById('titleInfo').innerHTML = "";
+  }
+  function dispCoursePre(){
+    document.getElementById('courseInfo').innerHTML = "Note: must be a UVA course prefix";
+  }
+    function NondispCoursePre(){
+    document.getElementById('courseInfo').innerHTML = "";
+  }
+  function dispNum(){
+    document.getElementById('numInfo').innerHTML = "Note: must be 4 digits. Enter '0' to not include.";
+  }
+    function NondispNum(){
+    document.getElementById('numInfo').innerHTML = "";
+  }
+
+  //event listeners
+  //Title id = title, prefix = prefix, number = number
+  var title = document.getElementById('title');
+  var prefix = document.getElementById('prefix');
+  var number = document.getElementById('number');
+
+  title.addEventListener('focus', function(){
+    dispTitle();
+    NondispNum();
+    NondispCoursePre();
+  }, false);
+  /*title.addEventListener('blur', function(){
+    NondispTitle();
+  }, false);*/
+  prefix.addEventListener('focus', function(){
+    dispCoursePre();
+    NondispTitle();
+    NondispNum();
+  }, false);
+  /*prefix.addEventListener('blur', function(){
+    NondispCoursePre();
+  }, false);*/
+  number.addEventListener('focus', function(){
+    dispNum();
+    NondispTitle();
+    NondispCoursePre();
+  }, false);
+ /* number.addEventListener('blur', function(){
+    NondispNum();
+  }, false);*/
 </script>
 
 </html>
