@@ -175,7 +175,7 @@ table{
       	<a href="profilePage.html" class="btn">My Profile</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<a href="login.html" class="btn">Make Your Own Listing</a>
+      	<a href="createListing.php" class="btn">Make Your Own Listing</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
       	<a href="login.html" class="btn">Select Search Criteria</a>
@@ -201,7 +201,7 @@ table{
   <div id="dropper" class="collapse">
     <div style="">
         <a href="profilePage.html" class="btn" style="font-size: 20px;">My Profile</a>
-        <a href="login.html" class="btn" style="font-size: 20px;">Make Your Own Listing</a>
+        <a href="createListing.php" class="btn" style="font-size: 20px;">Make Your Own Listing</a>
         <a href="login.html" class="btn" style="font-size: 20px;">Select Search Criteria</a>
     </div>
   </div>
