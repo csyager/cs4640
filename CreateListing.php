@@ -94,7 +94,7 @@
         background-position: 5px 12px; 
         background-repeat: no-repeat;
         padding: 12px 20px 12px 40px;
-       -webkit-transition: width .4s ease-in-out;
+       -webkit-transition: width .4s ease-in-out; /*bootstrap Docs*/
         transition: width .4s ease-in-out;
     } 
 table{
