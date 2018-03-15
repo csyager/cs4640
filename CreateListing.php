@@ -181,7 +181,7 @@ table{
       	<a href="login.html" class="btn">Select Search Criteria</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<input type="text" class= "searchBar" id="searchword" placeholder="Search For Listings">
+      	<input type="text" class= "searchBar" id="searchword" placeholder="Search By Title">
         <button id="go" style="display: inline-block;" class="navButton">Go</button>
         </div>
       </div>
@@ -189,7 +189,7 @@ table{
   <nav class=" navbar navbar-default droptop">
       <div class="container-fluid">
         <div class="col-sm-9 col-9">
-            <input id="searchWordSmall" class="searchBar" type="text" name="search" placeholder="Search for Listings" style="max-width: 75%">
+            <input id="searchWordSmall" class="searchBar" type="text" name="search" placeholder="Search By Title" style="max-width: 75%">
             <button id="goSmall" class="navButton">Go</button>
         </div>
 <!--<a href="login.html" class="btn col-sm-3 col-3" data-toggle="collapse" data-target="#dropper" style="font-size: 3.3vw; ">Options</a> -->
