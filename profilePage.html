@@ -118,12 +118,12 @@
       .regular{
         /*css way to get navbar to turn into dropdown*/
       }
-    @media only screen and (min-width: 839px) {
+    @media only screen and (min-width: 850px) {
     .droptop {
         display: none;
     }
    }
-      @media only screen and (max-width: 838px) {
+      @media only screen and (max-width: 851px) {
     .regular{
         display: none;
     }
@@ -142,10 +142,10 @@
     		<img src="sunset.jpg" class="imgNav">
     	</div>
       <div class="col-md-2 col-sm-2" align="right">
-      	<a href="login.html" class="btn">My Profile</a>
+      	<a href="profilePage.html" class="btn">My Profile</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<a href="login.html" class="btn">Make Your Own Listing</a>
+      	<a href="CreateListing.php" class="btn">Make Your Own Listing</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
       	<a href="login.html" class="btn">Select Search Criteria</a>
@@ -170,8 +170,8 @@
 </div>
   <div id="dropper" class="collapse">
     <div style="">
-        <a href="login.html" class="btn" style="font-size: 20px;">My Profile</a>
-        <a href="login.html" class="btn" style="font-size: 20px;">Make Your Own Listing</a>
+        <a href="profilePage.html" class="btn" style="font-size: 20px;">My Profile</a>
+        <a href="CreateListing.php" class="btn" style="font-size: 20px;">Make Your Own Listing</a>
         <a href="login.html" class="btn" style="font-size: 20px;">Select Search Criteria</a>
     </div>
   </div>
@@ -184,6 +184,7 @@
 
 </div> <!--end navbar-->
   <!-- We need to put a 'manage listings' button undecided of where it will go, so it is not included-->
+<<<<<<< HEAD
   <h1 style="padding-left: 35px">Profile</h1>
 
   </div>
@@ -195,6 +196,19 @@
 <table style="width: 90%; background-color: orange; margin-left: 30px">
 <!--top padding-->
 <tr><td><br></td></tr>
+=======
+  <h1 style="padding-left: 35px; padding-bottom: 0px;">Your Name</h1>
+
+  </div>
+<div id="left" style="float: left; width: 30%">
+<img src="profilepic.png" height="30%" width ="100%" style="padding: 30px">
+<br>
+<!--<h1 style="text-align: center">Your Name</h1>-->
+<br>
+<table style="width: 90%; background-color: orange; margin-left: 30px">
+<!--top padding-->
+<tr><td></td></tr>
+>>>>>>> cf751a394363323105ee74c82328c75ca87b7a35
 <tr>
 <td>user@gmail.com</td>
 </tr>
@@ -203,11 +217,16 @@
 <td>5 Stars</td>
 </tr>
 <tr>
+<<<<<<< HEAD
 <td>Number of Listings</td>
+=======
+<td>Number of Listings:</td>
+>>>>>>> cf751a394363323105ee74c82328c75ca87b7a35
 <td>2 Listings</td>
 <!--bottom padding-->
 <tr><td><br></td></tr>
 </table>
+<<<<<<< HEAD
 
 </div>
 <div id="right" style="float:right; width: 60%">
@@ -215,36 +234,69 @@
 <table style="width: 80%; background-color: orange; margin-left: 30px">
 <tr>
 <td colspan="2" style="text-align: center"><b>Your Listings</b></td>
+=======
+<h2 style="padding: 5%;"></h2>
+
+</div>
+<div style="float: right; width: 2%;"></div>
+<div id="right" style="float:right; width: 60%;">
+<br>
+<table style="width: 80%; background-color: rgba(7, 55, 99, .65); margin-left: 30px; border-radius: 10px;">
+<tr>
+<th colspan="3" style="text-align: center; color: white; font-family: verdana;">Your Listings</th>
+>>>>>>> cf751a394363323105ee74c82328c75ca87b7a35
 </tr>
 <!--line break-->
 <tr><td><br></td></tr>
 <!--listing 1-->
+<<<<<<< HEAD
 <tr style="outline: thick solid">
+=======
+<tr style="outline: thin solid; background-color: orange; ">
+>>>>>>> cf751a394363323105ee74c82328c75ca87b7a35
 <td><img src="textbook.jpg" height="100px" width="60px"></td>
 <td>
 <a href="unimplemented.html">Introduction to Python 3rd Edition</a>
       <p>Hardcover</p>
 <br>
 </td>
+<<<<<<< HEAD
 <!--padding between listings-->
 <tr><td><br></td></tr>
 <!--listing 2-->
 <tr style="outline: thick solid">
+=======
+<td><b>$100</b>
+        <p>Condition: Gently Used</p>
+</td>
+<!--padding between listings-->
+<tr><td><br></td></tr>
+<!--listing 2-->
+<tr style="outline: thin solid; background-color: orange;">
+>>>>>>> cf751a394363323105ee74c82328c75ca87b7a35
 <td><img src="textbook.jpg" height="100px" width="60px"></td>
 <td>
 <a href="unimplemented.html">Introduction to Python 3rd Edition</a>
       <p>Looseleaf</p>
 <br>
 </td>
+<<<<<<< HEAD
+=======
+<td><b>$50</b><p>Condition: Water Damaged</p></td>
+>>>>>>> cf751a394363323105ee74c82328c75ca87b7a35
 <!--padding between listings-->
 <tr><td><br></td></tr>
 </table>
 
 </div>
+<<<<<<< HEAD
 
+=======
+<footer style="padding-top: 10px;"></footer>
+>>>>>>> cf751a394363323105ee74c82328c75ca87b7a35
 </body>
 <script type="text/javascript">
-  //source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js
+ //source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js
   function makeX(x) {
     x.classList.toggle("change");
 }
@@ -252,8 +304,13 @@
 //downside of resizing is that two different search bars must be maintained
   function searchBig(){
     var term = document.getElementById('searchword');
-    ///Placeholder, we have nothing to search currently
+    ///Placeholder, we have nothing to search currently, just for demo
+    if(searchword.value == "python"){
+      window.open("booklistings.html", "_self");
+    }
+    else{
     alert("The tag you searhed for was not Found");
+  }
   }
   var sub = document.getElementById('go');
   sub.addEventListener('click', function(){
@@ -261,14 +318,20 @@
     }, false);
     function searchSmall(){
     var term = document.getElementById('searchWordSmall');
-    ///Placeholder, we have nothing to search currently
+    ///Placeholder, we have nothing to search currently, this is just for demo
+        if(searchWordSmall.value == "python"){
+      window.open("booklistings.html", "_self");
+    }
+    else{
     alert("The tag you searhed for was not Found");
+  }
   }
   var sub = document.getElementById('goSmall');
   sub.addEventListener('click', function(){
       searchSmall();
     }, false);
 //end search bar stuff
+
 
 
 </script>
