@@ -149,40 +149,39 @@ table{
     .dropButton{
       background-image: url(NavIcon.png);
     }
-          button{
+      .NormButton{
         background-color: #e69138ff;
         cursor: pointer;
         border-radius: 3px;
         border-color: #e69138ff;
       }
-      button:hover{
+      .NormButton:hover{
         /*have not decided what to do here yet*/
         background-color: #ffb833;
         border-color: #ffb833;
       }
-      .navButton{
-        background-color: #D3D3D3;
-        border-color: #D3D3D3;
+      ::-webkit-file-upload-button {
+        cursor:pointer;
       }
 </style>
 <div> <!--This is the navbar-->
-	<nav class="navbar navbar-default regular">
-    	<div class="container-fluid" style="border-color: #e69138ff">
-    	<div class="col-md-1 col-sm-1">
-    		<img src="sunset.jpg" class="imgNav">
-    	</div>
+  <nav class="navbar navbar-default regular">
+      <div class="container-fluid" style="border-color: #e69138ff">
+      <div class="col-md-1 col-sm-1">
+        <img src="sunset.jpg" class="imgNav">
+      </div>
       <div class="col-md-2 col-sm-2" align="right">
-      	<a href="profilePage.html" class="btn">My Profile</a>
+        <a href="profilePage.html" class="btn">My Profile</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<a href="createListing.php" class="btn">Make Your Own Listing</a>
+        <a href="CreateListing.php" class="btn">Make Your Own Listing</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<a href="login.html" class="btn">Select Search Criteria</a>
+        <a href="login.html" class="btn">Select Search Criteria</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<input type="text" class= "searchBar" id="searchword" placeholder="Search By Title">
-        <button id="go" style="display: inline-block;" class="navButton">Go</button>
+        <input type="text" id="searchword" class="searchBar" placeholder="Search By Title">
+        <button id="go" style="display: inline-block; cursor: pointer;">Go</button>
         </div>
       </div>
   </nav>
@@ -190,36 +189,33 @@ table{
       <div class="container-fluid">
         <div class="col-sm-9 col-9">
             <input id="searchWordSmall" class="searchBar" type="text" name="search" placeholder="Search By Title" style="max-width: 75%">
-            <button id="goSmall" class="navButton">Go</button>
+            <button id="goSmall" style="cursor: pointer;">Go</button>
         </div>
 <!--<a href="login.html" class="btn col-sm-3 col-3" data-toggle="collapse" data-target="#dropper" style="font-size: 3.3vw; ">Options</a> -->
-  <div class="container btn col-sm-2 col-2" data-toggle="collapse" data-target="#dropper" onclick="makeX(this)" style="float: right;">
-  <div class="bar1"></div>
-  <div class="bar2"></div>
-  <div class="bar3"></div>
-</div>
-  <div id="dropper" class="collapse">
-    <div style="">
-        <a href="profilePage.html" class="btn" style="font-size: 20px;">My Profile</a>
-        <a href="createListing.php" class="btn" style="font-size: 20px;">Make Your Own Listing</a>
-        <a href="login.html" class="btn" style="font-size: 20px;">Select Search Criteria</a>
-    </div>
-  </div>
+        <div class="container btn col-sm-2 col-2" data-toggle="collapse" data-target="#dropper" onclick="makeX(this)" style="float: right;">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
         </div>
-
-      </div>
+        <div id="dropper" class="collapse">
+          <div style="">
+              <a href="profilePage.html" class="btn" style="font-size: 20px;">My Profile</a>
+              <a href="CreateListing.php" class="btn" style="font-size: 20px;">Make Your Own Listing</a>
+              <a href="login.html" class="btn" style="font-size: 20px;">Select Search Criteria</a>
+          </div>
+        </div>
     </div>
 
-  </nav>
+</div>
 
-</div> <!--end navbar-->
+</nav>
+ <!--end navbar-->
 <h1></h1>
 
 
 
 <?php  
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  //echo "<center><table style='background-color:white; padding-bottom:0px;'><td style='color:red'>YOURalkd;jgldsjg;lads;aj;ldsfj;dsaljfsa;ldfj;dsalfjdsa;lfjdsa;lfdsajf;ldsajf;lsadjf;ljsaf</td></table></center>";
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $fileTypes = ['image/jpg', 'image/png', 'image/jpeg'];
     $courseERR = false;
@@ -231,117 +227,117 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //helpers
     //checking valid course prefix
-  function checkValidPre($prefix){ 
-    $preCaps = strtoupper($prefix);
-    return true;
-    //this will be validating the prefix with ones stored on the server, hardcoding these in
-  }
-  //checking valid course number, helper
-  function checkValidNum($num){
-    if($num == 0 || $num =="'0'"){
+    function checkValidPre($prefix){ 
+      $preCaps = strtoupper($prefix);
       return true;
+      //this will be validating the prefix with ones stored on the server, hardcoding these in
     }
-    if(ctype_digit((string)$num)){
-      if($num > 999 && $num < 10000){
+    //checking valid course number, helper
+    function checkValidNum($num){
+      if($num == 0 || $num =="'0'"){
         return true;
+      }
+      if(ctype_digit((string)$num)){
+        if($num > 999 && $num < 10000){
+          return true;
+        }
+        else{
+          return false;
+        }
       }
       else{
         return false;
       }
     }
-    else{
-      return false;
+
+    //prefix
+    if(!isset($_POST['prefix'])){
+      $courseERR = true;
     }
-  }
+    elseif(!checkValidPre($_POST['prefix'])){   
+         $courseERR = true;
+    }
 
-  //prefix
-  if(!isset($_POST['prefix'])){
-    $courseERR = true;
-  }
-  elseif(!checkValidPre($_POST['prefix'])){   
-       $courseERR = true;
-  }
-
-  //course number
-  if(!isset($_POST['number'])){
-    $numERR = true;
-  }
-  else{
-    $num = $_POST['number'];
-    if(!checkValidNum($num)){
+    //course number
+    if(!isset($_POST['number'])){
       $numERR = true;
-  }
-}
-  //title
-  if(!isset($_POST['title']) || (strpos($_POST['title'], '<') !== false) || (strpos($_POST['title'], '>') !== false)){ //guard script injection, title should be entered, double checking. 0 == false
-    $titleERR = true;
-  }
-  
-  //image stuff
-  
-  $size=$_FILES['imageIn']['size']; //this will be zero if no file at all was uploaded
-    // var_dump($size);
-  if($size == 0){
-    $imgERR = true; //no file uploaded
-  }
-  else{
-     $pic=getimagesize($_FILES['imageIn']['tmp_name']); 
-     $ext = $pic['mime'];
-     //check for extension
-     //var_dump($ext);
-     if(!in_array($ext, $fileTypes)){
-      $imgERR = true;
+    }
+    else{
+      $num = $_POST['number'];
+      if(!checkValidNum($num)){
+        $numERR = true;
     }
   }
-
-//error checking done, now either send to server or display error messages
-  if(!$imgERR && !$numERR && !$titleERR && !$courseERR){
-    //send data to server
-    echo "Send to the Server";
-  } //errors were there
-  else{
-    $numberERRS = 0;
-    echo "<center><table style='background-color:white; padding-bottom:0px;'>";
-    if ($imgERR) {
-        if($numberERRS == 0){
-          $numberERRS = 1;
-          echo "<td style='color:red'>File must be an image</td>";
-        }
-        else{
-          echo "<tr><td style='color:red'>File must be an image</td></tr>";
-        }
-
-      }
-    if ($courseERR) {
-       if($numberERRS == 0){
-          $numberERRS = 1;
-          echo "<td style='color:red'>Course prefix was not valid</td>";
-      }
-        else{
-          echo "<tr><td style='color:red'>Course prefix was not valid</td></tr>";
-       }
-
-      }
-    if ($numERR) {
-        if($numberERRS == 0){
-          $numberERRS = 1;
-          echo "<td style='color:red'>Course number was not valid</td>";
-        }
-        else{
-          echo "<tr><td style='color:red'>Course number was not valid</td></tr>";
-        }
-
+    //title
+    if(!isset($_POST['title']) || (strpos($_POST['title'], '<') !== false) || (strpos($_POST['title'], '>') !== false)){ //guard script injection, title should be entered, double checking. 0 == false
+      $titleERR = true;
     }
-    if($titleERR)
+    
+    //image stuff
+    
+    $size=$_FILES['imageIn']['size']; //this will be zero if no file at all was uploaded
+      // var_dump($size);
+    if($size == 0){
+      $imgERR = true; //no file uploaded
+    }
+    else{
+       $pic=getimagesize($_FILES['imageIn']['tmp_name']); 
+       $ext = $pic['mime'];
+       //check for extension
+       //var_dump($ext);
+       if(!in_array($ext, $fileTypes)){
+        $imgERR = true;
+      }
+    }
+
+  //error checking done, now either send to server or display error messages
+    if(!$imgERR && !$numERR && !$titleERR && !$courseERR){
+      //send data to server
+      echo "Send to the Server";
+    } //errors were there
+    else{
+      $numberERRS = 0;
+      echo "<center><table style='background-color:white; padding-bottom:0px;'>";
+      if ($imgERR) {
+          if($numberERRS == 0){
+            $numberERRS = 1;
+            echo "<td style='color:red'>File must be an image</td>";
+          }
+          else{
+            echo "<tr><td style='color:red'>File must be an image</td></tr>";
+          }
+
+        }
+      if ($courseERR) {
          if($numberERRS == 0){
-          echo "<td style='color:red'>Title contained invalid characters</td>";
+            $numberERRS = 1;
+            echo "<td style='color:red'>Course prefix was not valid</td>";
         }
-        else{
-          echo "<tr><td style='color:red'>Title contained invalid characters</td></tr>";
-        }
+          else{
+            echo "<tr><td style='color:red'>Course prefix was not valid</td></tr>";
+         }
 
-    }
-    echo "</table></center>";
+        }
+      if ($numERR) {
+          if($numberERRS == 0){
+            $numberERRS = 1;
+            echo "<td style='color:red'>Course number was not valid</td>";
+          }
+          else{
+            echo "<tr><td style='color:red'>Course number was not valid</td></tr>";
+          }
+
+      }
+      if($titleERR)
+           if($numberERRS == 0){
+            echo "<td style='color:red'>Title contained invalid characters</td>";
+          }
+          else{
+            echo "<tr><td style='color:red'>Title contained invalid characters</td></tr>";
+          }
+
+      }
+      echo "</table></center>";
 }
 
 ?>
@@ -370,7 +366,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </tr>
     <tr>
       <td>
-        <select  id="type" name="type" required>
+        <select  id="type" name="type" required style="cursor: pointer;">
         <option selected disabled>Select Book Type</option>
         <option>Hardcover</option>
         <option>Paperback</option>
@@ -380,7 +376,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </tr>
     <tr>
     <td>
-      <select id="condition" name="condition" required>
+      <select id="condition" name="condition" required style="cursor: pointer;">
         <option selected disabled>Select a Book Condition</option>
         <option>Like New</option>
         <option>Good (May have small amount of writing/highlighting)</option>
@@ -393,7 +389,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       <td style="color:white; text-align: right;">Upload an Image--><input type="file" name="imageIn" id="img"></td>
     </tr>
     <tr>
-      <td><button type="submit">Submit</button></td>
+      <td><button type="submit" class="NormButton">Submit</button></td>
     </tr>
 </table>
 </form>

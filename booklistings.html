@@ -134,53 +134,51 @@
     }
 </style>
 <div> <!--This is the navbar-->
-	<nav class="navbar navbar-default regular">
-    	<div class="container-fluid" style="border-color: #e69138ff">
-    	<div class="col-md-1 col-sm-1">
-    		<img src="sunset.jpg" class="imgNav">
-    	</div>
+  <nav class="navbar navbar-default regular">
+      <div class="container-fluid" style="border-color: #e69138ff">
+      <div class="col-md-1 col-sm-1">
+        <img src="sunset.jpg" class="imgNav">
+      </div>
       <div class="col-md-2 col-sm-2" align="right">
-      	<a href="profilePage.html" class="btn">My Profile</a>
+        <a href="profilePage.html" class="btn">My Profile</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<a href="CreateListing.php" class="btn">Make Your Own Listing</a>
+        <a href="CreateListing.php" class="btn">Make Your Own Listing</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<a href="login.html" class="btn">Select Search Criteria</a>
+        <a href="login.html" class="btn">Select Search Criteria</a>
       </div>
       <div class="col-md-3 col-sm-3" align="right">
-      	<input type="text" id="searchword" placeholder="Search By Title">
-        <button id="go" style="display: inline-block;">Go</button>
+        <input type="text" id="searchword" class="searchBar" placeholder="Search By Title">
+        <button id="go" style="display: inline-block; cursor: pointer;">Go</button>
         </div>
       </div>
   </nav>
   <nav class=" navbar navbar-default droptop">
       <div class="container-fluid">
         <div class="col-sm-9 col-9">
-            <input id="searchWordSmall" type="text" name="search" placeholder="Search By Title" style="max-width: 75%">
-            <button id="goSmall">Go</button>
+            <input id="searchWordSmall" class="searchBar" type="text" name="search" placeholder="Search By Title" style="max-width: 75%">
+            <button id="goSmall" style="cursor: pointer;">Go</button>
         </div>
 <!--<a href="login.html" class="btn col-sm-3 col-3" data-toggle="collapse" data-target="#dropper" style="font-size: 3.3vw; ">Options</a> -->
-  <div class="container btn col-sm-2 col-2" data-toggle="collapse" data-target="#dropper" onclick="makeX(this)" style="float: right;">
-  <div class="bar1"></div>
-  <div class="bar2"></div>
-  <div class="bar3"></div>
-</div>
-  <div id="dropper" class="collapse">
-    <div style="">
-        <a href="profilePage.html" class="btn" style="font-size: 20px;">My Profile</a>
-        <a href="CreateListing.php" class="btn" style="font-size: 20px;">Make Your Own Listing</a>
-        <a href="login.html" class="btn" style="font-size: 20px;">Select Search Criteria</a>
-    </div>
-  </div>
+        <div class="container btn col-sm-2 col-2" data-toggle="collapse" data-target="#dropper" onclick="makeX(this)" style="float: right;">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
         </div>
-
-      </div>
+        <div id="dropper" class="collapse">
+          <div style="">
+              <a href="profilePage.html" class="btn" style="font-size: 20px;">My Profile</a>
+              <a href="CreateListing.php" class="btn" style="font-size: 20px;">Make Your Own Listing</a>
+              <a href="login.html" class="btn" style="font-size: 20px;">Select Search Criteria</a>
+          </div>
+        </div>
     </div>
 
-  </nav>
+</div>
 
-</div> <!--end navbar-->
+</nav>
+ <!--end navbar-->
 
 <div id="left" style="float: left; width: 30%; height: 100%">
 	<br>
