@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="logCSS.css"> <!--This is the login type page style sheet-->
+</head>
+  
+  <body class="img-fluid">
+    <center>
+    <h1></h1> <!---Just a place holder so the table isn't on the top-->
+    </center>
+    <form>
+        <center>
+      <table>   <!--Formatting the two options, the login page is a table-->
+        <th colspan="2" class="tabForm">UnnamedWebsite.com</th>
+       <!--POSSIBLY NOT NEEDED IF THE NAME OF THE SITE IS GOOD--> <tr> <td colspan="2" style="text-align: center; padding-bottom: 2%; padding-top: 0; color: white; font-size: 18px">The quick and easy way to buy and sell textbooks with peers</td> </tr>
+        <tr>
+          <td class="tabForm">Already Have an Account?</td>       
+          <td class="tabForm">Join Now!</td>
+       </tr>
+        <tr>
+          <td class="tabForm"><br><input type="text" id="user" placeholder="Email" tabindex="1"/></td>  
+          <td rowspan="2" class="tabForm"> <button id="create">Create Account</button></td>
+        </tr>
+        <tr>  
+          <td class="tabForm"><input type="password" id="pass" placeholder="Password" tabindex="2"> </td>
+
+        <tr>
+          <td class="tabForm"><button id="log">Log in</button></td>
+        </tr>
+        <tr>
+
+         <td class="tabForm"> <a href="forgot.html" title="Forgot">Forgot my Password</a></td>  
+        </tr>
+      </table>
+    </center>
+      </form>
+
+  </body>
+  <script type="text/javascript"> //most of the functions here are just framework, we need to have a backend to maintain a lot of things
+    //not to be used yet
+    var pass = document.getElementById('pass');
+
+    function createAcct(){
+      alert("can't do anything yet (not implemented)")
+    }
+
+    //these would be similar to what happens when the log in button is pressed.
+    function checkUser(){
+      var user = document.getElementById('user');
+      if(user.value.length != 19 && user.value.length != 18){
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+    function logPress(){
+      if(checkUser() == true)
+        alert("No accounts made yet, no back end");
+      else
+        alert("username not valid, it needs to be a UVA Email");
+    }
+    var log = document.getElementById('log');
+    log.addEventListener('click', function(){
+      logPress(); }, false);  
+    var create = document.getElementById('create');
+    create.addEventListener('click', function(){
+      createAcct();
+    }, false);
+
+  </script>
+</html>
