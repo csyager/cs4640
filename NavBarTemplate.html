@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>profile</title>
+	<link rel="stylesheet" href="css/bootstrap.css" /> 
+</head>
+<body>
+	<style type="text/css">
+		 body{
+        background: linear-gradient(
+        rgba(0, 0, 0, 0.1), 
+        rgba(0, 0, 0, 0.1)
+        ),url("normal.jpg");
+        background-position: center center;
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+        background-size: cover;
+	}
+	nav{
+		background-color: #e69138ff;
+		}
+	.navbar{
+		padding-bottom: 1%;
+		padding-top: 1%;
+	}
+	.btn{
+		font-size: 2.0vw;
+	}
+	.imgNav{
+		display: inline-block;
+		position: left;
+		max-width: 100%;
+		height: auto;	
+		width: auto;
+	}
+ 	a:link {
+    color: black;
+    text-align: center;
+    }
+      /* visited link */
+      a:visited {
+          color: black;
+      }
+      /* mouse over link */
+      a:hover {
+          background-color: orange;
+      }
+      /* selected link */
+      a:active {
+          color: #e69138ff;
+      }
+      input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-size: 35px;
+    background-position: 2px 5px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+   -webkit-transition: width .4s ease-in-out;
+    transition: width .4s ease-in-out;
+}
+
+	</style>
+	<nav class="navbar navbar-default">
+  	<div class="container-fluid">
+  	<div class="col-md-1">
+  		<img src="sunset.jpg" class="imgNav">
+  	</div>
+    <div class="col-md-2" align="right">
+    	<a href="login.html" class="btn">My Profile</a>
+    </div>
+    <div class="col-md-3" align="right">
+    	<a href="login.html" class="btn">Make Your Own Listing</a>
+    </div>
+    <div class="col-md-3" align="right">
+    	<a href="login.html" class="btn">Select Search Criteria</a>
+    </div>
+    <div class="col-md-3" align="right">
+    	<input type="text" id="searchword" value="Search For Listings">
+    </div>
+
+  </div>
+
+</nav>
+<h1 style="color: white;">Hello</h1>
+
+</body>
+</html>

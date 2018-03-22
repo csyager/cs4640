@@ -1,0 +1,69 @@
+ body{
+        background: linear-gradient(
+        rgba(0, 0, 0, 0.1), 
+        rgba(0, 0, 0, 0.1)
+        ),url("loginPic.jpg");
+        background-position: center center;
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      h1{ /*MAYBE*/
+        font-family: "verdana";
+        color: white;
+        padding-top: 4%;
+        font-size: 4.0vw;
+        padding-bottom: 1.75%
+
+      }
+      table{
+        padding-top: 2%;
+        padding-bottom: 2%;
+        border-radius: 10px;
+        float: center;
+        background-color: rgba(7, 55, 99, .65);
+      }
+      .tabForm{
+        color: white;
+        font-family: "verdana";
+        width: 30%;
+        text-align: center;
+        float: center;
+      }
+      td{
+        font-size: 20px;
+      }
+      th{
+        font-size: 4.0VW;
+      }
+      button{
+        background-color: #e69138ff;
+        cursor: pointer;
+        border-radius: 3px;
+        border-color: #e69138ff;
+      }
+      button:hover{
+        /*have not decided what to do here yet*/
+        background-color: #ffb833;
+        border-color: #ffb833;
+      }
+
+      a:link {
+    color: white;
+    font-size: 12px
+    }
+
+      /* visited link */
+      a:visited {
+          color: white;
+      }
+
+      /* mouse over link */
+      a:hover {
+          color: #e69138ff;
+      }
+
+      /* selected link */
+      a:active {
+          color: #e69138ff;
+      }
