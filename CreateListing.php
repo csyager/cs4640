@@ -35,7 +35,7 @@
     transform: rotate(45deg) translate(-8px, -8px);
 }
 /*end source*/
-		 body{
+     body{
         background: linear-gradient(
         rgba(0, 0, 0, 0.3), 
         rgba(0, 0, 0, 0.3)
@@ -44,28 +44,28 @@
         background-repeat: no-repeat; 
         background-attachment: fixed;
         background-size: cover;
-	}
+  }
 
-	.navbar{
-		padding-bottom: 1%;
-		padding-top: 1%;
-	}
-	.btn{
-		font-size: 2.0vw;
+  .navbar{
+    padding-bottom: 1%;
+    padding-top: 1%;
+  }
+  .btn{
+    font-size: 2.0vw;
     background-color: #e69138ff;
     
-	}
+  }
   .btn: hover{
     background-color: orange;
   }
-	.imgNav{
-		display: inline-block;
-		position: left;
-		max-width: 100%;
-		height: auto;	
-		width: auto;
-	}
- 	a:link {
+  .imgNav{
+    display: inline-block;
+    position: left;
+    max-width: 100%;
+    height: auto; 
+    width: auto;
+  }
+  a:link {
     color: black;
     text-align: center;
     }
@@ -94,7 +94,7 @@
         background-position: 5px 12px; 
         background-repeat: no-repeat;
         padding: 12px 20px 12px 40px;
-       -webkit-transition: width .4s ease-in-out; /*bootstrap Docs*/
+       -webkit-transition: width .4s ease-in-out;
         transition: width .4s ease-in-out;
     } 
 table{
@@ -237,16 +237,13 @@ table{
       if($num == 0 || $num =="'0'"){
         return true;
       }
-      if(ctype_digit((string)$num)){
+      if(is_numeric($num)){
         if($num > 999 && $num < 10000){
           return true;
         }
         else{
           return false;
         }
-      }
-      else{
-        return false;
       }
     }
 
@@ -264,6 +261,9 @@ table{
     }
     else{
       $num = $_POST['number'];
+      if(!is_numeric($num)){
+        $numERR = true;
+      }
       if(!checkValidNum($num)){
         $numERR = true;
     }
