@@ -38,7 +38,7 @@ public class Email extends HttpServlet {
     // please go to the gmail account >> sign-in and security >> turn on the "less security" option. 
  	
     private String username = "leisurekyle45@gmail.com";   // ask me for username and password used for this example
-    private String password = "Kleisure45";
+    private String password = "fake";
  			
     private String from_email = "leisurekyle45@gmail.com";
  	   
