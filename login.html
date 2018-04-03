@@ -30,11 +30,11 @@
           <td class="tabForm"><input type="password" id="pass" placeholder="Password" tabindex="2"> </td>
 
         <tr>
-          <td class="tabForm"><button id="log">Log in</button></td>
+          <td class="tabForm"><button id="log" type="submit">Log in</button></td>
         </tr>
         <tr>
 
-         <td class="tabForm"> <a href="forgot.html" title="Forgot">Forgot my Password</a></td>  
+         <td class="tabForm"> <a href="forgot.jsp" title="Forgot">Forgot my Password</a></td>  
         </tr>
       </table>
     </center>
@@ -61,17 +61,18 @@
     }
     function logPress(){
       if(checkUser() == true)
-        alert("No accounts made yet, no back end");
+        //alert("No accounts made yet, no back end");
       else
         alert("username not valid, it needs to be a UVA Email");
+      	Window.open("login.html", "_self");
     }
-    var log = document.getElementById('log');
-    log.addEventListener('click', function(){
-      logPress(); }, false);  
-    var create = document.getElementById('create');
-    create.addEventListener('click', function(){
-      createAcct();
-    }, false);
+   // var log = document.getElementById('log');
+  //  log.addEventListener('click', function(){
+     // logPress(); }, false);  
+  //  var create = document.getElementById('create');
+  //  create.addEventListener('click', function(){
+     // createAcct();
+   // }, false);
 
   </script>
 </html>
