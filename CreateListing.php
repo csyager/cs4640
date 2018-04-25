@@ -215,6 +215,8 @@ table{
 
 
 <?php  
+  
+
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $fileTypes = ['image/jpg', 'image/png', 'image/jpeg'];
@@ -222,8 +224,11 @@ table{
     $numERR = false;
     $titleERR = false;
     $imgERR = false;
+    $priceErr = false;
    
-
+ if(!is_numeric($_POST['price'])){
+      $priceErr = true;
+    }
 
     //helpers
     //checking valid course prefix
@@ -291,9 +296,35 @@ table{
     }
 
   //error checking done, now either send to server or display error messages
-    if(!$imgERR && !$numERR && !$titleERR && !$courseERR){
+     //error checking done, now either send to server or display error messages
+    if(!$imgERR && !$numERR && !$titleERR && !$courseERR && !$priceErr){
       //send data to server
-      echo "Send to the Server";
+      if($_POST['condition'] == 'Poor (May have lots of markings/water damage/torn pages)'){
+        $_POST['condition'] = 'Poor';
+      }
+      elseif ($_POST['condition'] == 'Good (May have small amount of writing/highlighting)') {
+        $_POST['condition'] = 'Good';
+      }
+      elseif ($_POST['condition'] == 'Okay (contains decent amount of writing/highlighting)') {
+        $_POST['condition'] = 'Good';
+      }
+      ///////////////////////////////////////////////////////xml stuff
+      $xml=simplexml_load_file("C:/Users/Kyle Leisure/Desktop/PL Web App/eclip/test/WebContent/WEB-INF/data/Books.xml") or die("Error: Cannot create object");
+
+      $text = $xml->addChild('text');
+      $text->addChild('title', $_POST['title']);
+      $text->addChild('price', $_POST['price']);
+      $text->addChild('type', $_POST['type']);
+      $text->addChild('condition', $_POST['condition']);
+      $text->addChild('img', 'textbook.jpg'); //only support one pic right now
+      $text->addChild('prefix', $_POST['prefix']);
+      $text->addChild('number', $_POST['number']);
+      $text->addChild('poster', 'abc1de@virginia.edu'); //generic for now, php doesn't cross over with sessions
+
+      $xml->asXml("C:/Users/Kyle Leisure/Desktop/PL Web App/eclip/test/WebContent/WEB-INF/data/Books.xml");
+
+      
+
     } //errors were there
     else{
       $numberERRS = 0;
@@ -337,6 +368,15 @@ table{
           }
 
       }
+      if($priceErr){
+        if($numberERRS == 0){
+            $numberERRS = 1;
+            echo "<td style='color:red'>Price was not valid</td>";
+        }
+          else{
+            echo "<tr><td style='color:red'>Price was not valid</td></tr>";
+         }
+      }
       echo "</table></center>";
 }
 
@@ -372,6 +412,7 @@ table{
         <option>Paperback</option>
         <option>Looseleaf</option>
       </select>
+      <input type="text" name="price" placeholder="Price in Dollars (ex. 0.00)" required>
       </td>
     </tr>
     <tr>
