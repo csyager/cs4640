@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+import java.io.File;
+import java.io.*;
+import java.util.*;
 
 /**
  * Servlet implementation class test
@@ -29,7 +39,7 @@ public class test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter(); //creates session, goes to email, comes back and session is there already, need to delete the session in the email servlet, but it is not connected
 		response.setContentType ("text/html");
 		HttpSession session = request.getSession(false);
 		if(session == null) {
@@ -110,7 +120,7 @@ public class test extends HttpServlet {
 					"  </script>");
 		}
 		else {
-			response.sendRedirect("profilePage.html");
+			response.sendRedirect("profilePage.jsp");
 		}
 	}
 
@@ -119,19 +129,64 @@ public class test extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//doGet(request, response);
+		ArrayList<String> emails = new ArrayList<String>(); //would use hash table here, but for this sample size, this is better
+		ArrayList<String> passwords = new ArrayList<String>(); //^
+		  try {
+		         Document doc = create_DOM_from_file("C:/Users/Kyle Leisure/Desktop/PL Web App/eclip/test/WebContent/WEB-INF/data/Logins.xml");
+		         
+
+		         NodeList nList = doc.getElementsByTagName("user");
+		         // iterate children of nList 
+		         for (int i = 0; i < nList.getLength(); i++) 
+		         {
+		            Node nd = nList.item(i);
+		            
+		            // check if nd is an XML element, get values of its attributes and children
+		            if (nd.getNodeType() == Node.ELEMENT_NODE) 
+		            {
+		               Element ele = (Element)nd;
+		               emails.add(ele.getElementsByTagName("email").item(0).getTextContent());
+		               passwords.add(ele.getElementsByTagName("password").item(0).getTextContent());
+		               
+		            }
+		         }
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		      }
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
+		
 
-		if(user == "" || pass == "") {//to be changed
+		if(!emails.contains(user)) {
 			response.sendRedirect("http://localhost:8080/test/test");
 		}
-		else {
+		else { //emails contains user
+			if(pass.equals(passwords.get(emails.indexOf(user)))){ //the indecies will line up, again, a hash table would be better but this is small scale (three users)
 			HttpSession ses = request.getSession(true);
-			response.sendRedirect("profilePage.html");
+			ses.setAttribute("userName", user);
+			response.sendRedirect("profilePage.jsp");
+			}
+			else {
+				response.sendRedirect("http://localhost:8080/test/test");
+			}
+		}
 		}
 
-	}
+	   private Document create_DOM_from_file(String fname) throws Exception 
+	   {
+	      try {
+	         File datafile = new File(fname);
+	         DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+	         DocumentBuilder dbuilder = dbfactory.newDocumentBuilder();
+	         Document doc = dbuilder.parse(datafile);
+	         return doc;
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      return null;
+	   } 
 
 }

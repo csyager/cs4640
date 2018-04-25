@@ -1,6 +1,15 @@
 <%@ page language="java" %>
 <%@ page import = "java.util.Date"%>
 <%@ page import= "bean.TimeBean" %>
+<%@ page import="javax.xml.parsers.DocumentBuilderFactory"%>
+<%@ page import="javax.xml.parsers.DocumentBuilder"%>
+<%@ page import="org.w3c.dom.Document"%>
+<%@ page import="org.w3c.dom.NodeList"%>
+<%@ page import="org.w3c.dom.Node"%>
+<%@ page import="org.w3c.dom.Element"%>
+<%@ page import="java.util.Date"%>
+<%@ page import ="java.io.File"%>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -185,20 +194,70 @@
 </nav>
  <!--end navbar-->
   <!-- We need to put a 'manage listings' button undecided of where it will go, so it is not included-->
-  <jsp:useBean id="Timer" class="bean.TimeBean" scope="session"/>
+    <jsp:useBean id="Timer" class="bean.TimeBean" scope="session"/>
+  <jsp:setProperty name="Timer" property="username" value="${sessionScope.userName}"/>
+  <%! ArrayList<String> xTitles = new ArrayList<String>();
+    ArrayList<String> xTypes = new ArrayList<String>();
+    ArrayList<String> xPrices = new ArrayList<String>();
+    ArrayList<String> xConditions = new ArrayList<String>();
+     ArrayList<String> xImgs = new ArrayList<String>(); //indicies here should all match
+      ArrayList<String> xPrefixes = new ArrayList<String>();
+       ArrayList<String> xNumbers = new ArrayList<String>();
+        ArrayList<String> xPosters = new ArrayList<String>();
+        int sizeData = 0;%> 
+         <%! //String datafile = "test/WebContent/WEB-INF/data/books.xml"; 
+  private Document create_DOM_from_file(String fname) throws Exception 
+   {
+      try {
+         File datafile = new File(fname);
+         DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+         DocumentBuilder dbuilder = dbfactory.newDocumentBuilder();
+         Document doc = dbuilder.parse(datafile);
+         return doc;
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return null;
+   } %>
+   <%
+   try{
+   Document doc = create_DOM_from_file("C:/Users/Kyle Leisure/Desktop/PL Web App/eclip/test/WebContent/WEB-INF/data/Books.xml"); //this would have to be changed
+
+   NodeList nList = doc.getElementsByTagName("text"); 
+     sizeData = nList.getLength();
+   for(int i = 0; i < nList.getLength(); i++){
+      Node nd = nList.item(i);
+      if(nd.getNodeType() == Node.ELEMENT_NODE){
+        Element ele = (Element)nd;
+          xTitles.add(ele.getElementsByTagName("title").item(0).getTextContent());
+          xPrices.add(ele.getElementsByTagName("price").item(0).getTextContent());
+          xTypes.add(ele.getElementsByTagName("type").item(0).getTextContent());
+          xConditions.add(ele.getElementsByTagName("condition").item(0).getTextContent());
+          xImgs.add(ele.getElementsByTagName("img").item(0).getTextContent());
+          xPrefixes.add(ele.getElementsByTagName("prefix").item(0).getTextContent());
+          xNumbers.add(ele.getElementsByTagName("number").item(0).getTextContent());
+          xPosters.add(ele.getElementsByTagName("poster").item(0).getTextContent());
+      
+    }
+   }
+
+ } catch (Exception e) {
+         e.printStackTrace();
+    }
+ %>
+
   <div style="height: 100%;">
-  <h1 style="padding-left: 35px; padding-bottom: 0px;">Your Name</h1>
+  <h1 style="padding-left: 35px; padding-bottom: 0px;">My Profile</h1>
 
 <div id="left" style="float: left; width: 35%; height: 100%;">
 <img src="profilepic.png" height="30%" width ="100%" style="padding: 30px">
 <br>
-<!--<h1 style="text-align: center">Your Name</h1>-->
 <br>
 <table style="width: 90%; background-color: orange; margin-left: 30px">
 <!--top padding-->
 <tr><td></td></tr>
 <tr>
-<td>user@gmail.com</td>
+<td><jsp:getProperty name="Timer" property="username"/></td>
 </tr>
 <tr>
 <td>Average Rating:</td>
@@ -222,33 +281,27 @@
 <th colspan="3" style="text-align: center; color: white; font-family: verdana;">Your Listings</th>
 </tr>
 <!--line break-->
+
 <tr><td><br></td></tr>
+<% for(int i = 0; i<sizeData; i++){
+    if(xPosters.get(i).equals(Timer.getUsername())){ %>
 <!--listing 1-->
 <tr style="outline: thin solid; background-color: orange; ">
 <td><img src="textbook.jpg" height="100px" width="60px"></td>
 <td>
-<a href="unimplemented.html">Introduction to Python 3rd Edition</a>
-      <p>Hardcover</p>
+<a href="unimplemented.html"><%= xTitles.get(i)%></a>
+      <p><%= xTypes.get(i)%></p>
 <br>
 </td>
-<td><b>$100</b>
-        <p>Condition: Gently Used</p>
+<td><b><%= xPrices.get(i) %></b>
+        <p>Condition: <%= xConditions.get(i)%></p>
 </td>
 </tr>
 <!--padding between listings-->
 <tr><td><br></td></tr>
-<!--listing 2-->
-<tr style="outline: thin solid; background-color: orange;">
-<td><img src="textbook.jpg" height="100px" width="60px"></td>
-<td>
-<a href="unimplemented.html">Introduction to Python 3rd Edition</a>
-      <p>Looseleaf</p>
-<br>
-</td>
-<td><b>$50</b><p>Condition: Water Damaged</p></td>
-</tr>
-<!--padding between listings-->
-<tr><td><br></td></tr>
+<% } }%>
+
+
 </table>
 
 </div>

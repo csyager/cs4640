@@ -190,8 +190,11 @@
 
 </nav>
  <!--end navbar-->
+ <!--BEAN STUFF-->
+<jsp:useBean id="Timer" class="bean.TimeBean" scope="session" />
+<%! Date cur = new Date(); %>
+<jsp:setProperty name="Timer" property="result" value="<%= new Date() %>"/>
  <!--XML STUFF-->
- <%! String x = "Shit";%>
  <%! ArrayList<String> xTitles = new ArrayList<String>();
     ArrayList<String> xTypes = new ArrayList<String>();
     ArrayList<String> xPrices = new ArrayList<String>();
@@ -201,8 +204,7 @@
        ArrayList<String> xNumbers = new ArrayList<String>();
         ArrayList<String> xPosters = new ArrayList<String>();
         int sizeData = 0;%> 
-
- <%! //String datafile = "test/WebContent/WEB-INF/data/books.xml"; 
+         <%! //String datafile = "test/WebContent/WEB-INF/data/books.xml"; 
   private Document create_DOM_from_file(String fname) throws Exception 
    {
       try {
@@ -219,21 +221,22 @@
    <%
    try{
    Document doc = create_DOM_from_file("C:/Users/Kyle Leisure/Desktop/PL Web App/eclip/test/WebContent/WEB-INF/data/Books.xml"); //this would have to be changed
-   x = doc.getDocumentElement().getNodeName();
+
    NodeList nList = doc.getElementsByTagName("text"); 
-   sizeData = nList.getLength();
+     sizeData = nList.getLength();
    for(int i = 0; i < nList.getLength(); i++){
       Node nd = nList.item(i);
       if(nd.getNodeType() == Node.ELEMENT_NODE){
         Element ele = (Element)nd;
-        xTitles.add(ele.getElementsByTagName("title").item(0).getTextContent());
-        xPrices.add(ele.getElementsByTagName("price").item(0).getTextContent());
-        xTypes.add(ele.getElementsByTagName("type").item(0).getTextContent());
-        xConditions.add(ele.getElementsByTagName("condition").item(0).getTextContent());
-        xImgs.add(ele.getElementsByTagName("img").item(0).getTextContent());
-        xPrefixes.add(ele.getElementsByTagName("prefix").item(0).getTextContent());
-       xNumbers.add(ele.getElementsByTagName("number").item(0).getTextContent());
-        xPosters.add(ele.getElementsByTagName("poster").item(0).getTextContent());
+          xTitles.add(ele.getElementsByTagName("title").item(0).getTextContent());
+          xPrices.add(ele.getElementsByTagName("price").item(0).getTextContent());
+          xTypes.add(ele.getElementsByTagName("type").item(0).getTextContent());
+          xConditions.add(ele.getElementsByTagName("condition").item(0).getTextContent());
+          xImgs.add(ele.getElementsByTagName("img").item(0).getTextContent());
+          xPrefixes.add(ele.getElementsByTagName("prefix").item(0).getTextContent());
+          xNumbers.add(ele.getElementsByTagName("number").item(0).getTextContent());
+          xPosters.add(ele.getElementsByTagName("poster").item(0).getTextContent());
+      
     }
    }
 
@@ -242,10 +245,8 @@
     }
  %>
 
-<!--BEAN STUFF-->
-<jsp:useBean id="Timer" class="bean.TimeBean" scope="session" />
-<%! Date cur = new Date(); %>
-<jsp:setProperty name="Timer" property="result" value="<%= new Date() %>"/>
+
+
 <div id="left" style="float: left; width: 30%; height: 100%">
 	<br>
 	<table style="height: 90%">
@@ -273,6 +274,7 @@
 	
   <% //for loop
     for(int c = 0; c < sizeData; c++){
+      if(!xPosters.get(c).equals(Timer.getUsername())){
   %>
 		<!--listing 1-->
 		<tr>
@@ -302,6 +304,7 @@
 		<td style="width: 10px"></td>
 		</tr>
     <%
+  }
       } //end of the for loop
     %>
 		
