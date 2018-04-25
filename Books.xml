@@ -1,0 +1,43 @@
+<?xml version = "1.0"?>
+<Books>
+  <text id="001">
+    <title>Introduction to Python 3rd Edition</title>
+    <price>399.99</price>
+    <type>Hardcover</type>
+    <condition>Good</condition>
+    <img>textbook.jpg</img>
+    <prefix>CS</prefix>
+    <number>1110</number>
+    <poster>kdl2ba@virginia.edu</poster>
+  </text>
+  <text id="002">
+    <title>Introduction to Python 3rd Edition</title>
+    <price>99.99</price>
+    <type>Paperback</type>
+    <condition>Poor</condition>
+    <img>textbook.jpg</img>
+    <prefix>CS</prefix>
+    <number>1110</number>
+    <poster>csy7ay@virginia.edu</poster>
+  </text>
+  <text id="003">
+    <title>Introduction to Python 3rd Edition</title>
+    <price>9.99</price>
+    <type>Hardcover</type>
+    <condition>Good</condition>
+    <img>textbook.jpg</img>
+    <prefix>CS</prefix>
+    <number>1110</number>
+    <poster>csy7ay@virginia.edu</poster>
+  </text>
+  <text id="004">
+    <title>Introduction to Python 3rd Edition</title>
+    <price>10.99</price>
+    <type>Looseleaf</type>
+    <condition>Okay</condition>
+    <img>textbook.jpg</img>
+    <prefix>CS</prefix>
+    <number>1110</number>
+    <poster>kdl2ba@virginia.edu</poster>
+  </text>
+</Books>

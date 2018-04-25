@@ -1,0 +1,16 @@
+<?xml version = "1.0"?>
+<Users>
+  <user id="001">
+    <email>kdl2ba@virginia.edu</email>
+    <password>kyle</password>
+  </user>
+  <user id="002">
+    <email>csy7ay@virginia.edu</email>
+    <password>connor</password>
+  </user>
+  <user id="003">
+    <email>abc1de@virginia.edu</email>
+    <password>john</password>
+  </user>
+  	
+</Users>
