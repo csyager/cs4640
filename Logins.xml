@@ -3,14 +3,17 @@
   <user id="001">
     <email>kdl2ba@virginia.edu</email>
     <password>kyle</password>
+    <rating>4</rating>
   </user>
   <user id="002">
     <email>csy7ay@virginia.edu</email>
     <password>connor</password>
+    <rating>3.5</rating>
   </user>
   <user id="003">
     <email>abc1de@virginia.edu</email>
     <password>john</password>
+    <rating>2</rating>
   </user>
   	
 </Users>

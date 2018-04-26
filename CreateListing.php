@@ -6,7 +6,9 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="ajaxEC.js"> </script>
 </head>
+
 <body style="height: 100%">
 <style type="text/css">  /*Will probably put this into a CSS file. 
 /*source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js */
@@ -392,7 +394,7 @@ table{
       <td style="font-size: 15px; padding-bottom: 5%;"><a href="unimplemented.html" style="color: white; text-decoration: underline;">How do I fill this out?</a></td>
     </tr>
     <tr>
-      <td><input type="text" id="title" name="title" placeholder="Book Title" style="width: 400px;" required></td>
+      <td><input type="text" id="title" name="title" placeholder="Book Title" style="width: 400px;" required"></td>
     </tr>
     <tr>
       <td><div id="titleInfo" style="color: orange; font-weight: bold;"></div></tr>
@@ -412,7 +414,12 @@ table{
         <option>Paperback</option>
         <option>Looseleaf</option>
       </select>
-      <input type="text" name="price" placeholder="Price in Dollars (ex. 0.00)" required>
+      <input type="text" name="price" id="price" placeholder="Price in Dollars (ex. 0.00)" required onkeyup="showPrice(this.value)">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="priceInfo" style="color: orange; font-weight: bold;"></div>
       </td>
     </tr>
     <tr>
@@ -484,7 +491,7 @@ table{
 */
   //info and errors
   function dispTitle(){
-    document.getElementById('titleInfo').innerHTML = "Note: title may not include '<' or '>'";
+   document.getElementById('titleInfo').innerHTML = "Note: title may not include '<' or '>'";
   }
     function NondispTitle(){
     document.getElementById('titleInfo').innerHTML = "";

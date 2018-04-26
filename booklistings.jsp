@@ -196,14 +196,14 @@
 <jsp:setProperty name="Timer" property="result" value="<%= new Date() %>"/>
  <!--XML STUFF-->
  <%! ArrayList<String> xTitles = new ArrayList<String>();
-    ArrayList<String> xTypes = new ArrayList<String>();
-    ArrayList<String> xPrices = new ArrayList<String>();
-    ArrayList<String> xConditions = new ArrayList<String>();
+     ArrayList<String> xTypes = new ArrayList<String>();
+     ArrayList<String> xPrices = new ArrayList<String>();
+     ArrayList<String> xConditions = new ArrayList<String>();
      ArrayList<String> xImgs = new ArrayList<String>(); //indicies here should all match
-      ArrayList<String> xPrefixes = new ArrayList<String>();
-       ArrayList<String> xNumbers = new ArrayList<String>();
-        ArrayList<String> xPosters = new ArrayList<String>();
-        int sizeData = 0;%> 
+     ArrayList<String> xPrefixes = new ArrayList<String>();
+     ArrayList<String> xNumbers = new ArrayList<String>();
+     ArrayList<String> xPosters = new ArrayList<String>();
+     int sizeData = 0;%> 
          <%! //String datafile = "test/WebContent/WEB-INF/data/books.xml"; 
   private Document create_DOM_from_file(String fname) throws Exception 
    {

@@ -4,6 +4,7 @@ public class TimeBean {
 	Date d;
 	Date r;
 	String username;
+	String stars;
 	public TimeBean() {
 		// TODO Auto-generated constructor stub
 		d = new Date();
@@ -26,5 +27,11 @@ public class TimeBean {
 	}
 	public void setUsername(String s) {
 		username = s;
+	}
+	public String getStars(){
+		return stars;
+	}
+	public void setStars(String s){
+		stars=s;
 	}
 }

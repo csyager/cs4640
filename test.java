@@ -132,6 +132,7 @@ public class test extends HttpServlet {
 		//doGet(request, response);
 		ArrayList<String> emails = new ArrayList<String>(); //would use hash table here, but for this sample size, this is better
 		ArrayList<String> passwords = new ArrayList<String>(); //^
+		ArrayList<String> stars = new ArrayList<String>();
 		  try {
 		         Document doc = create_DOM_from_file("C:/Users/Kyle Leisure/Desktop/PL Web App/eclip/test/WebContent/WEB-INF/data/Logins.xml");
 		         
@@ -148,7 +149,7 @@ public class test extends HttpServlet {
 		               Element ele = (Element)nd;
 		               emails.add(ele.getElementsByTagName("email").item(0).getTextContent());
 		               passwords.add(ele.getElementsByTagName("password").item(0).getTextContent());
-		               
+		               stars.add(ele.getElementsByTagName("rating").item(0).getTextContent());
 		            }
 		         }
 		      } catch (Exception e) {
@@ -167,6 +168,7 @@ public class test extends HttpServlet {
 			if(pass.equals(passwords.get(emails.indexOf(user)))){ //the indecies will line up, again, a hash table would be better but this is small scale (three users)
 			HttpSession ses = request.getSession(true);
 			ses.setAttribute("userName", user);
+			ses.setAttribute("stars", stars.get(emails.indexOf(user)));
 			response.sendRedirect("profilePage.jsp");
 			}
 			else {

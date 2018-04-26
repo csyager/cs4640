@@ -196,6 +196,7 @@
   <!-- We need to put a 'manage listings' button undecided of where it will go, so it is not included-->
     <jsp:useBean id="Timer" class="bean.TimeBean" scope="session"/>
   <jsp:setProperty name="Timer" property="username" value="${sessionScope.userName}"/>
+  <jsp:setProperty name="Timer" property="stars" value="${sessionScope.stars}"/>
   <%! ArrayList<String> xTitles = new ArrayList<String>();
     ArrayList<String> xTypes = new ArrayList<String>();
     ArrayList<String> xPrices = new ArrayList<String>();
@@ -204,7 +205,8 @@
       ArrayList<String> xPrefixes = new ArrayList<String>();
        ArrayList<String> xNumbers = new ArrayList<String>();
         ArrayList<String> xPosters = new ArrayList<String>();
-        int sizeData = 0;%> 
+        int sizeData = 0;
+        int listCounter = 0;%> 
          <%! //String datafile = "test/WebContent/WEB-INF/data/books.xml"; 
   private Document create_DOM_from_file(String fname) throws Exception 
    {
@@ -222,13 +224,16 @@
    <%
    try{
    Document doc = create_DOM_from_file("C:/Users/Kyle Leisure/Desktop/PL Web App/eclip/test/WebContent/WEB-INF/data/Books.xml"); //this would have to be changed
-
    NodeList nList = doc.getElementsByTagName("text"); 
      sizeData = nList.getLength();
+     listCounter = 0;
    for(int i = 0; i < nList.getLength(); i++){
       Node nd = nList.item(i);
       if(nd.getNodeType() == Node.ELEMENT_NODE){
         Element ele = (Element)nd;
+          if(ele.getElementsByTagName("poster").item(0).getTextContent().equals(Timer.getUsername())){
+          listCounter += 1;
+        }
           xTitles.add(ele.getElementsByTagName("title").item(0).getTextContent());
           xPrices.add(ele.getElementsByTagName("price").item(0).getTextContent());
           xTypes.add(ele.getElementsByTagName("type").item(0).getTextContent());
@@ -261,11 +266,11 @@
 </tr>
 <tr>
 <td>Average Rating:</td>
-<td>5 Stars</td>
+<td><jsp:getProperty name="Timer" property="stars"/> Stars</td>
 </tr>
 <tr>
 <td>Number of Listings:</td>
-<td>2 Listings</td>
+<td><%=listCounter%> Listings</td>
 <!--bottom padding-->
 <tr><td><br></td></tr>
 </table>
