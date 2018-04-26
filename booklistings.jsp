@@ -291,7 +291,7 @@
 		</td>
 		<!--Price and condition-->
 		<td style="background-color: orange">
-			<b><%= xPrices.get(c)%></b>
+			<b>$<%= xPrices.get(c)%></b>
 			<p>Condition: <%=xConditions.get(c)%></p>
 		<td style="width: 10px; background-color: rgba(7, 55, 99, .65)"></td>
 		<td style="width: 10px"></td>

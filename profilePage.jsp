@@ -298,7 +298,7 @@
       <p><%= xTypes.get(i)%></p>
 <br>
 </td>
-<td><b><%= xPrices.get(i) %></b>
+<td><b>$<%= xPrices.get(i) %></b>
         <p>Condition: <%= xConditions.get(i)%></p>
 </td>
 </tr>
